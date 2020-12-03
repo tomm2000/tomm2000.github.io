@@ -1,5 +1,13 @@
-const screenWidth = 1200;
-const screenHeight = 600;
+// const screenWidth = 1200;
+// const screenHeight = 600;
+
+const screenWidth = -10+ window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+
+const screenHeight = -75+ window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight;
 
 let array = [];
 let tempPoint = null;
