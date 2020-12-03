@@ -139,7 +139,8 @@ function keyPressed() {
 }
 
 function runDownload() {
-    setAndDownloadData(tGeoWriter(array));
+    //setAndDownloadData(tGeoWriter(array));
+    console.log('click')
 }
 
 
