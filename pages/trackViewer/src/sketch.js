@@ -1,5 +1,6 @@
-var myHeaders = new Headers(); // Currently empty
-myHeaders.set('Expires', '-1');
+var myHeader = new Headers(); // Currently empty
+myHeader.get('Expires')
+console.log(myHeader)
 
 const screenWidth = -10+ window.innerWidth
 || document.documentElement.clientWidth
