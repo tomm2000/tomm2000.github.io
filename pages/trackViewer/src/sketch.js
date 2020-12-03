@@ -1,6 +1,5 @@
 var myHeader = new Headers(); // Currently empty
 myHeader.get('Expires')
-console.log(myHeader)
 
 const screenWidth = -10+ window.innerWidth
 || document.documentElement.clientWidth
@@ -22,6 +21,7 @@ function setup() {
 }
 
 function draw() {
+    console.log(myHeader)
     background(240);
 
     if(keyIsDown(65)) { // A
