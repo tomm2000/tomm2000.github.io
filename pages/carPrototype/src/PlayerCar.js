@@ -10,6 +10,10 @@ class PlayerCar extends Car {
         if(keyIsDown(68)) { // A
             this.steerLeft();
         }
+
+        if(keyIsDown(80)) { // A
+            this.ghost = true;
+        }
     
         if(keyIsDown(87)) { // W
             this.accelerate();

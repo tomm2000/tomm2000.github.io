@@ -21,6 +21,7 @@ class Car {
         // CAR COLLISION BOX
         this.stepSize = 1;
         this.collisionBox = new CollisionRect(this.center.x, this.center.y, _radius, _shape);
+        this.ghost = false;
     }
 
     show() {
@@ -28,28 +29,10 @@ class Car {
         this.collisionBox.showAuto();
 
         // DISPLAY INFO
-        strokeWeight(0)
-        textSize(10);
-        fill(0);
+        textSettings(10)
         text('speed: ' + Number(this.speed).toFixed(1), this.center.x-20, this.center.y-this.radius - 5)
         text('pos: '+ Number(this.center.x).toFixed(2) + ", " + Number(this.center.y).toFixed(2), this.center.x-20, this.center.y-this.radius - 15)
     }
-
-    /*
-    move(shapes=[]) {
-
-        let mov = createVector(this.speed, 0).rotate(this.direction);
-        this.center.add(mov);
-        this.collisionBox.move(this.center.x, this.center.y, this.direction);
-
-        if (this.checkCollision(shapes)) {
-            this.speed = 0;
-            this.center.sub(mov);
-            this.collisionBox.move(this.center.x, this.center.y, this.direction);
-        }
-        
-    }
-    */
 
     move(_shapes=[]) {
         let absSpeed = Math.abs(this.speed)
@@ -66,12 +49,13 @@ class Car {
             this.center.add(mov);
             this.collisionBox.move(this.center.x, this.center.y, this.direction);
 
-            if (this.checkCollision(shapes)) {
+            if (this.checkCollision(shapes) && !this.ghost) {
                 this.speed = 0;
-                this.center.sub(mov);
+                this.center.sub(mov.mult(1.5));
                 this.collisionBox.move(this.center.x, this.center.y, this.direction);
             }
         }
+        this.ghost = false;
 
     }
 
