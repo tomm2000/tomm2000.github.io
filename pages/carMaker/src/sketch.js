@@ -1,10 +1,13 @@
-const screenWidth = -10+ window.innerWidth
-|| document.documentElement.clientWidth
-|| document.body.clientWidth;
+// const screenWidth = -10+ window.innerWidth
+// || document.documentElement.clientWidth
+// || document.body.clientWidth;
 
-const screenHeight = -85+ window.innerHeight
-|| document.documentElement.clientHeight
-|| document.body.clientHeight;
+// const screenHeight = -85+ window.innerHeight
+// || document.documentElement.clientHeight
+// || document.body.clientHeight;
+
+const screenWidth = 800;
+const screenHeight = 600;
 
 const canvasX = 0;
 const canvasY = 150;

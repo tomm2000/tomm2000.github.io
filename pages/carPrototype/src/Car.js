@@ -44,7 +44,7 @@ class Car {
 
         // DISPLAY INFO
         textSettings(10)
-        text('speed: ' + Number(this.speed).toFixed(1), this.center.x-20, this.center.y-this.radius - 5)
+        text('speed: ' + Number(this.speed).toFixed(1) + " / " + maxSpeed, this.center.x-20, this.center.y-radius - 5)
         text('pos: '+ Number(this.center.x).toFixed(2) + ", " + Number(this.center.y).toFixed(2), this.center.x-20, this.center.y-radius - 15)
     }
 
