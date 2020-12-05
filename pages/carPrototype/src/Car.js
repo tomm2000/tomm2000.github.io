@@ -124,10 +124,8 @@ class Car {
         let coll = false;
 
         for(let i = 0; i < shapes.length; i++) {
-            if(shapes[i] instanceof Line) {
-                if(this.collisionBox.isLineColliding(shapes[i])) {
-                    coll = true;
-                }
+            if(this.collisionBox.isColliding(shapes[i])) {
+                coll = true;
             }
         }
 

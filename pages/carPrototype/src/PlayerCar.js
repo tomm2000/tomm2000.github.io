@@ -20,14 +20,14 @@ class PlayerCar extends Car {
             this.ghost = true;
         }
     
-        if(keyIsDown(87)) { // W
+        if(keyIsDown(32)) { // SPACE
+            this.brake();
+            
+        } else if(keyIsDown(87)) { // W
             this.accelerate();
     
         } else if(keyIsDown(83)) { // S
             this.reverse();
-    
-        } else if(keyIsDown(32)) { // SPACE
-            this.brake();
     
         } else {
             this.idle();

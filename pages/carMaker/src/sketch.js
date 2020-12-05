@@ -104,6 +104,7 @@ function draw() {
     text("Blue: " + blue, 90, CAR_COLOR_Y + 55)
     text("Alpha: " + alpha, 90, CAR_COLOR_Y + 75)
 
+    new Circle(screenWidth/2, screenHeight/2, radius*2).show(0,0,0,0,1,128, 128, 128, 128) // car outline
     new CollisionRect(screenWidth/2, screenHeight/2, radius * editMod.radius, shape * editMod.shape).show(red, green, blue, alpha)
 }
 
