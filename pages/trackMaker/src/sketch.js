@@ -1,6 +1,3 @@
-// const screenWidth = 1200;
-// const screenHeight = 600;
-
 const screenWidth = -10+ window.innerWidth
 || document.documentElement.clientWidth
 || document.body.clientWidth;
@@ -9,23 +6,22 @@ const screenHeight = -75+ window.innerHeight
 || document.documentElement.clientHeight
 || document.body.clientHeight;
 
-let array = [];
-let tempPoint = null;
-let drawSetting = 'POINT';
-let cameraSpeed = 6;
-let cameraPos;
-
-//let button;
+let array = []; // SHAPE ARRAY
+let tempPoint = null; // temp point for multi-click shapes
+let drawSetting = 'POINT'; // current draw setting
+let cameraSpeed = 6; // camera mov speed
+let cameraPos; // camera pos
 
 function setup() {
-    createCanvas(screenWidth, screenHeight);
-
-    cameraPos = createVector(0, 0)
+    canvas = createCanvas(screenWidth, screenHeight);
+    canvas.mousePressed(canvasClick);
+    cameraPos = createVector(0, 0);
 }
 
 function draw() {
     background(240);
     
+    // CAMERA MOVEMET
     if(keyIsDown(65)) { // A
         cameraPos.x += cameraSpeed;
     }
@@ -38,7 +34,9 @@ function draw() {
     if (keyIsDown(83)) { // S
         cameraPos.y -= cameraSpeed;
     }
+    // =======================
 
+    // DRAW SETTING CHANGING [keys 1-4]
     if(keyIsDown(49) && tempPoint == null) { // POINT
         drawSetting = 'POINT';
     } else if (keyIsDown(50) && tempPoint == null) { // LINE
@@ -49,7 +47,8 @@ function draw() {
         drawSetting = 'CIRCLE';
     }
 
-    textSettings(10,0,0,0);
+    // DISPLAYS SOME INFO TEXT
+    textSettings(10);
     text('press numbers 1-4 \n to change mode \n---------------------------\n press Z to undo', 5, 10);
     textSize(10);
     text('current mode:', 120, 10);
@@ -61,10 +60,13 @@ function draw() {
     text(cameraPos.x + " | " + cameraPos.y, 240, 30);
     textSize(10);
     text("press C to go to 0,0", 240, 43)
+    // ===========================
+    
+    // DRAWING
+    translate(cameraPos) // translate to camera pos
 
-    translate(cameraPos)
-    if(tempPoint != null) {
-        textSettings(10,0,0,0);
+    if(tempPoint != null) { // displays "x to cancel" on the mouse is a multi-click shape is being drawn
+        textSettings(10);
         text('press X to cancel', mouseX - cameraPos.x, mouseY - cameraPos.y-10);
         if(keyIsDown(88)) {
             tempPoint = null;
@@ -72,13 +74,11 @@ function draw() {
     }
     
     if(tempPoint != null) {
-        textSettings(10,0,0,0);
-        text('press X to cancel', mouseX - cameraPos.x, mouseY - cameraPos.y-10);
-        if(keyIsDown(88)) {
+        if(keyIsDown(88)) { // resets the temppoint if key is clicked (stops drawing the shape)
             tempPoint = null;
         }
 
-        switch(drawSetting) {
+        switch(drawSetting) { // if a multi-click shape is being drawn, displays a preview based on the current mouse position
             case 'AUTOLINE':
             case 'LINE':
                 strokeWeight(1);
@@ -96,12 +96,13 @@ function draw() {
         }
     }
 
-    for(let i = 0; i < array.length; i++) {
+    for(let i = 0; i < array.length; i++) { // draws the shapes
         array[i].show();
     }
+    // ==============================
 }
 
-function mousePressed() {
+function canvasClick() { // HANDLES THE CONSTRUCTION OF SHAPES WHEN THE MOUSE IS PRESSED ON THE CANVAS
     if (mouseButton === LEFT) {
         switch(drawSetting) {
             case 'POINT': 
@@ -138,10 +139,10 @@ function mousePressed() {
     }
 }
 
-function keyPressed() {
-    if(keyCode === 90 && tempPoint == null) {
+function keyPressed() { 
+    if(keyCode === 90 && tempPoint == null) { // PRESS z TO REMOVE LATEST SHAPE
         array.pop();
-    } else if(keyCode === 67) {
+    } else if(keyCode === 67) { // PRESS C TO MOVE CAMERA TO 0,0
         cameraPos = createVector(0,0);
     }
 }

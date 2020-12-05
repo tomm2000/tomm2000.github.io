@@ -1,16 +1,21 @@
-const screenWidth = 800;
-const screenHeight = 500;
+const screenWidth = -10+ window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+
+const screenHeight = -85+ window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight;
 
 const canvasX = 0;
 const canvasY = 150;
 
-const CAR_SETTINGS_Y = 20;
-const DEFAULT_CAR_Y = 180;
-const CAR_COLOR_Y = 250;
+const CAR_SETTINGS_Y = 20; // height of the car settings UI
+const DEFAULT_CAR_Y = 180; // height of the default car UI
+const CAR_COLOR_Y = 250; // height of the car color UI
 
 let sliders;
 
-let car = {
+let car = { // car object to edit
     radius: 10,
     shape: 2,
     maxSpeed: 10,
@@ -18,9 +23,15 @@ let car = {
     friction: 5,
     steerPower: 2,
     brakePower: 5,
+    color: {
+        red: 0,
+        green: 0,
+        blue: 0,
+        alpha: 0,
+    }
 };
 
-let editMod = {
+let editMod = { // modification settings (not used here)
     radius: 2,
     shape: Math.PI/12,
     maxSpeed: 1,
@@ -28,13 +39,6 @@ let editMod = {
     friction: 0.01,
     steerPower: Math.PI/200,
     brakePower: 1,
-}
-
-let carColor = {
-    red: 0,
-    green: 0,
-    blue: 0,
-    alpha: 0,
 }
 
 
@@ -49,37 +53,41 @@ function setup() {
         alpha: createSlider(0, 255, 255, 1),
     }
 
-    sliders.red.position(canvasX, canvasY + CAR_COLOR_Y);
-    sliders.red.style('width', '80px');
+    const {red, green, blue, alpha} = sliders;
+
+    red.position(canvasX, canvasY + CAR_COLOR_Y);
+    red.style('width', '80px');
     
-    sliders.green.position(canvasX, canvasY + CAR_COLOR_Y + 20);
-    sliders.green.style('width', '80px');
+    green.position(canvasX, canvasY + CAR_COLOR_Y + 20);
+    green.style('width', '80px');
     
-    sliders.blue.position(canvasX, canvasY + CAR_COLOR_Y + 40);
-    sliders.blue.style('width', '80px');
+    blue.position(canvasX, canvasY + CAR_COLOR_Y + 40);
+    blue.style('width', '80px');
     
-    sliders.alpha.position(canvasX, canvasY + CAR_COLOR_Y + 60);
-    sliders.alpha.style('width', '80px');
+    alpha.position(canvasX, canvasY + CAR_COLOR_Y + 60);
+    alpha.style('width', '80px');
 }
 
 function draw() {
     background(240);
 
-    carColor.red = sliders.red.value();
-    carColor.green = sliders.green.value();
-    carColor.blue = sliders.blue.value();
-    carColor.alpha = sliders.alpha.value();
-    const {red, green, blue, alpha} = carColor;
+    car.color.red = sliders.red.value();
+    car.color.green = sliders.green.value();
+    car.color.blue = sliders.blue.value();
+    car.color.alpha = sliders.alpha.value();
+    
+    const {radius, shape, maxSpeed, acceleration, friction, steerPower, brakePower, color} = car;
+    const {red, green, blue, alpha} = color;
 
     textSettings(20);
     // CAR SETTINGS
-    text("Radius: " + car.radius, 10, CAR_SETTINGS_Y)
-    text("Shape: " + car.shape, 10, CAR_SETTINGS_Y + 20)
-    text("Max Speed: " + car.maxSpeed, 10, CAR_SETTINGS_Y + 40)
-    text("Acceleration: " + car.acceleration, 10, CAR_SETTINGS_Y + 60)
-    text("Friction: " + car.friction, 10, CAR_SETTINGS_Y + 80)
-    text("Steer Power: " + car.steerPower, 10, CAR_SETTINGS_Y + 100)
-    text("Brake Power: " + car.brakePower, 10, CAR_SETTINGS_Y + 120)
+    text("Radius: " + radius, 10, CAR_SETTINGS_Y)
+    text("Shape: " + shape, 10, CAR_SETTINGS_Y + 20)
+    text("Max Speed: " + maxSpeed, 10, CAR_SETTINGS_Y + 40)
+    text("Acceleration: " + acceleration, 10, CAR_SETTINGS_Y + 60)
+    text("Friction: " + friction, 10, CAR_SETTINGS_Y + 80)
+    text("Steer Power: " + steerPower, 10, CAR_SETTINGS_Y + 100)
+    text("Brake Power: " + brakePower, 10, CAR_SETTINGS_Y + 120)
 
     // DEFAULT CAR
     new CollisionRect(60, DEFAULT_CAR_Y + 20, 20, Math.PI/6).show();
@@ -93,11 +101,7 @@ function draw() {
     text("Blue: " + blue, 90, CAR_COLOR_Y + 55)
     text("Alpha: " + alpha, 90, CAR_COLOR_Y + 75)
 
-    new CollisionRect(screenWidth/2, screenHeight/2, car.radius * editMod.radius, car.shape * editMod.shape).show(red, green, blue, alpha)
-}
-
-function runDownload() {
-    setAndDownloadData(tCarWriter(car));
+    new CollisionRect(screenWidth/2, screenHeight/2, radius * editMod.radius, shape * editMod.shape).show(red, green, blue, alpha)
 }
 
 function radiusEdit(n) {
@@ -131,6 +135,10 @@ function brakePowerEdit(n) {
 
 function loadCar() {
     car = getCarData();
+}
+
+function runDownload() {
+    setAndDownloadData(tCarWriter(car));
 }
 
 

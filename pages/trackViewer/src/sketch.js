@@ -6,11 +6,9 @@ const screenHeight = -85+ window.innerHeight
 || document.documentElement.clientHeight
 || document.body.clientHeight;
 
-let array = [];
-let tempPoint = null;
-let drawSetting = 'POINT';
-let cameraPos;
-let cameraSpeed = 6;
+let array = []; // SHAPE ARRAY
+let cameraPos; // CAMERA POS
+let cameraSpeed = 6; // CAMERA SPEED
 
 function setup() {
     createCanvas(screenWidth, screenHeight);
@@ -20,6 +18,7 @@ function setup() {
 function draw() {
     background(240);
 
+    // CAMERA MOVEMET
     if(keyIsDown(65)) { // A
         cameraPos.x += cameraSpeed;
     }
@@ -32,20 +31,23 @@ function draw() {
     if (keyIsDown(83)) { // S
         cameraPos.y -= cameraSpeed;
     }
+    // ====================
 
+    // LOADS THE SHAPED DATA
+    // !!! MUST BE CHANGED LIKE OTHER DATA LOADING SYSTEMS !!!
     if(array.length == 0)
         array = getGeoData();
 
-    color(255);
-    fill(0)
-    strokeWeight(0);
-    textSize(10);
+    // DISPLAYS SOME INFO
+    textSettings()
     text("camera position:", 10, 10)
     textSize(20);
     text(cameraPos.x + " | " + cameraPos.y, 10, 30);
     
+    // MOVES THE CAMERA
     translate(cameraPos);
 
+    // DISPLAYS THE SHAPES
     for(let i = 0; i < array.length; i++) {
         array[i].show();
     }

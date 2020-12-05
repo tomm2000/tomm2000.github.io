@@ -1,9 +1,14 @@
+//========================================//
+// CLASS THAT MANAGES A PLAYER CONTROLLED CAR
+// REQUIRES p5.js, TPrimGeo.js, TCompGeo.js, TLib.js
+//========================================//
+
 class PlayerCar extends Car {
-    constructor(_radius=20, _size=(PI/6)) {
-        super(_radius, _size);
+    constructor() {
+        super();
     }
 
-    control() {
+    control() { // checks keyboard inputs and sends control info to the car class (super)
         if(keyIsDown(65)) { // D
             this.steerRight();
         }
