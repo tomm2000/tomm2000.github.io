@@ -26,7 +26,7 @@ class Car {
 
     show() {
         // DRAW CAR
-        this.collisionBox.showAuto();
+        this.collisionBox.show();
 
         // DISPLAY INFO
         textSettings(10)

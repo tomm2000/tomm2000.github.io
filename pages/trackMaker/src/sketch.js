@@ -97,7 +97,7 @@ function draw() {
     }
 
     for(let i = 0; i < array.length; i++) {
-        array[i].showAuto();
+        array[i].show();
     }
 }
 

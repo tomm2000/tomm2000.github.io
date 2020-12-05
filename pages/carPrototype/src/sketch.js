@@ -55,7 +55,7 @@ function draw() {
         cars[i].show()
 
     for(let i = 0; i < shapes.length; i++) {
-        shapes[i].showAuto();   
+        shapes[i].show();   
     } 
 }
 
