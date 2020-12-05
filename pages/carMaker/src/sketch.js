@@ -33,7 +33,7 @@ function draw() {
     background(240);
 
     strokeWeight(1)
-    stroke(200, 200, 200, 200)
+    stroke(100, 100, 100, 180)
     exampleCar.show();
 
     textSettings(20);
