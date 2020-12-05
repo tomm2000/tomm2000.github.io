@@ -113,4 +113,26 @@ class Car {
 
         return coll;
     }
+
+    loadCarData(data) {     
+        let editMod = {
+            radius: 2,
+            shape: Math.PI/12,
+            maxSpeed: 1,
+            acceleration: 0.01,
+            friction: 0.01,
+            steerPower: Math.PI/200,
+            brakePower: 0.5,
+        }
+
+        this.radius = data.radius * editMod.radius;
+        this.shape = data.shape * editMod.shape;
+        this.maxSpeed = data.maxSpeed * editMod.maxSpeed;
+        this.acceleration = data.acceleration * editMod.acceleration;
+        this.friction = data.friction * editMod.friction;
+        this.steerPower = data.steerPower * editMod.steerPower;
+        this.brakePower = data.brakePower * editMod.brakePower;
+
+        this.collisionBox = new CollisionRect(this.center.x, this.center.y, this.radius, this.shape);
+    }
 }

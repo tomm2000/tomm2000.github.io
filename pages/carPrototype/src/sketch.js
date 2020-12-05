@@ -29,9 +29,6 @@ function setup() {
 }
 
 function draw() {
-    // TRACK LOADING
-    if(shapes.length == 0)
-        shapes = getGeoData();
 
     background(240);
 
@@ -59,8 +56,15 @@ function draw() {
 
     for(let i = 0; i < shapes.length; i++) {
         shapes[i].showAuto();   
-    }
-    
+    } 
+}
+
+function loadTrack() {
+    shapes = getGeoData();
+}
+
+function loadCar() {
+    cars[0].loadCarData(getCarData());
 }
 
 //setAndDownloadData(tGeoWriter(array));

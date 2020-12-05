@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>carMaker</title>
+
+	<!--external libraries-->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+	
+	<!--source files for current project-->
+
+	<!--TLib libraries-->
+	<script src="../../lib/TCarParser.js"></script>
+	<script src="../../lib/TFileReader.js"></script>
+	<script src="../../lib/TFileWriter.js"></script>
+	<script src="../../lib/TLib.js"></script>
+</head>
+
+<body>
+	<!--source code and other-->
+	<p><a href="../../index.html"><font color="blue">Home</font></a></p>
+	<p><script src="src/sketch.js"></script></p>
+	<input type="file" onchange="readFile(this)">
+	<p></p>
+
+	<!--Maker controls-->
+	<input type="button" name="radiusRem" value="-" onclick="radiusEdit(-1)">
+	<input type="button" name="radiusAdd" value="+" onclick="radiusEdit(1)">
+	<a>Radius |---------| </a>
+
+	<input type="button" name="shapeRem" value="-" onclick="shapeEdit(-1)">
+	<input type="button" name="shapeAdd" value="+" onclick="shapeEdit(1)">
+	<a>shape |---------| </a>
+
+	<input type="button" name="maxSpeedRem" value="-" onclick="maxSpeedEdit(-1)">
+	<input type="button" name="maxSpeedAdd" value="+" onclick="maxSpeedEdit(1)">
+	<a>MaxSpeed |---------| </a>
+
+	<input type="button" name="accelerationRem" value="-" onclick="accelerationEdit(-1)">
+	<input type="button" name="accelerationAdd" value="+" onclick="accelerationEdit(1)">
+	<a>acceleration |---------| </a>
+
+	<input type="button" name="frictionRem" value="-" onclick="frictionEdit(-1)">
+	<input type="button" name="frictionAdd" value="+" onclick="frictionEdit(1)">
+	<a>friction |---------| </a>
+
+	<input type="button" name="steerPowerRem" value="-" onclick="steerPowerEdit(-1)">
+	<input type="button" name="steerPowerAdd" value="+" onclick="steerPowerEdit(1)">
+	<a>steerPower |---------| </a>
+
+	<input type="button" name="brakePowerRem" value="-" onclick="brakePowerEdit(-1)">
+	<input type="button" name="brakePowerAdd" value="+" onclick="brakePowerEdit(1)">
+	<a>brakePower</a>
+
+	<p></p><input type="button" name="DownloadButton" value="Download car" onclick="runDownload()">
+</body>
+
+</html>

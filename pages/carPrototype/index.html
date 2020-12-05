@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
 	<meta charset="utf-8">
 	<title>carSimulator</title>
 
@@ -16,15 +15,22 @@
 	<script src="../../lib/TPrimGeo.js"></script>
 	<script src="../../lib/TCompGeo.js"></script>
 	<script src="../../lib/TGeoParser.js"></script>
+	<script src="../../lib/TCarParser.js"></script>
 	<script src="../../lib/TFileReader.js"></script>
 	<script src="../../lib/TLib.js"></script>
-
 </head>
 
 <body bgcolor="white">
-	<p><a href="../../index.html"><font color="blue">Home</font></a></p>
-	<input type="file" onchange="readFile(this)">
 	<script src="src/sketch.js"></script>
+
+	<p><a href="../../index.html"><font color="blue">Home</font></a></p>
+	<a>Load track from file => </a>
+	<input type="file" onchange="readFile(this)">
+	<input type="button" name="loadTrack" value="load Track" onclick="loadTrack()">
+	<p></p>
+	<a>Load car from file => </a>
+	<input type="file" onchange="readFile(this)">
+	<input type="button" name="loadTrack" value="load Car" onclick="loadCar()">
 </body>
 
 </html>

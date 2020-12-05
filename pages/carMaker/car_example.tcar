@@ -1,0 +1,14 @@
+//radius
+ra: 3;
+//shape
+sh: 2;
+//maxSpeed
+ms: 14;
+//acceleration
+ac: 515;
+//friction
+fr: 12;
+//steerPower
+sp: 41415;
+//brakePower
+bp: 2;
