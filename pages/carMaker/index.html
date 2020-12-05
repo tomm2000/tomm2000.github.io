@@ -13,6 +13,8 @@
 	<script src="../../lib/TCarParser.js"></script>
 	<script src="../../lib/TFileReader.js"></script>
 	<script src="../../lib/TFileWriter.js"></script>
+	<script src="../../lib/TCompGeo.js"></script>
+	<script src="../../lib/TPrimGeo.js"></script>
 	<script src="../../lib/TLib.js"></script>
 </head>
 
@@ -20,16 +22,19 @@
 	<!--source code and other-->
 	<p><a href="../../index.html"><font color="blue">Home</font></a></p>
 	<p><script src="src/sketch.js"></script></p>
+	<p></p>
+	<a>Load car from file => </a>
 	<input type="file" onchange="readFile(this)">
+	<input type="button" name="loadTrack" value="load Car" onclick="loadCar()">
 	<p></p>
 
 	<!--Maker controls-->
-	<input type="button" name="radiusRem" value="-" onclick="radiusEdit(-1)">
-	<input type="button" name="radiusAdd" value="+" onclick="radiusEdit(1)">
+	<input type="button" name="radiusRem" value="-" onclick="radiusEdit(-2)">
+	<input type="button" name="radiusAdd" value="+" onclick="radiusEdit(2)">
 	<a>Radius |---------| </a>
 
-	<input type="button" name="shapeRem" value="-" onclick="shapeEdit(-1)">
-	<input type="button" name="shapeAdd" value="+" onclick="shapeEdit(1)">
+	<input type="button" name="shapeRem" value="-" onclick="shapeEdit(-.25)">
+	<input type="button" name="shapeAdd" value="+" onclick="shapeEdit(.25)">
 	<a>shape |---------| </a>
 
 	<input type="button" name="maxSpeedRem" value="-" onclick="maxSpeedEdit(-1)">
@@ -44,8 +49,8 @@
 	<input type="button" name="frictionAdd" value="+" onclick="frictionEdit(1)">
 	<a>friction |---------| </a>
 
-	<input type="button" name="steerPowerRem" value="-" onclick="steerPowerEdit(-1)">
-	<input type="button" name="steerPowerAdd" value="+" onclick="steerPowerEdit(1)">
+	<input type="button" name="steerPowerRem" value="-" onclick="steerPowerEdit(-.5)">
+	<input type="button" name="steerPowerAdd" value="+" onclick="steerPowerEdit(.5)">
 	<a>steerPower |---------| </a>
 
 	<input type="button" name="brakePowerRem" value="-" onclick="brakePowerEdit(-1)">
