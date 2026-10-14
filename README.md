@@ -1,7 +1,7 @@
 # Personal landing page
 
-Source for [tomm2000.dev](https://tomm2000.dev/), hosted on GitHub Pages.
+My personal website: [tomm2000.dev](https://tomm2000.dev/).
 
-A minimal page with a short bio and links to [my GitHub profile](https://github.com/tomm2000) and the [Alpha Parallel Programming Group](https://alpha.di.unito.it).
+Italian computer science researcher at the [Alpha Parallel Programming Group](https://alpha.di.unito.it), University of Turin.
 
-The site is a single `index.html` file with inline CSS and no build step. Changes to `main` are published automatically by GitHub Pages.
+Find me on [GitHub](https://github.com/tomm2000).
